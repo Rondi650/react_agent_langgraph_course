@@ -11,7 +11,7 @@ from rich import print
 from rich.markdown import Markdown
 
 # llm = init_chat_model("google_genai:gemini-2.5-flash")
-llm = init_chat_model("ollama:gpt-oss:20b")
+llm = init_chat_model("openai:gpt-5-nano")
 
 
 # 1 - Defino o meu state

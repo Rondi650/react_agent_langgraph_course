@@ -1,7 +1,8 @@
 from typing import Annotated, TypedDict
 
-from langgraph.graph import END, START, StateGraph
+from langgraph.graph import END, START, StateGraph, add_messages
 from rich import print
+import operator
 
 # O Estado
 # O primeiro passo para definirmos um grafo será modelar o estado. Existe um
@@ -28,7 +29,7 @@ class State(TypedDict):
     # com o tipo deste campo mais uma função de reducer. O trabalho do reducer
     # é receber `a` e `b` (estado anterior e o novo) e unir os dois de alguma
     # forma. Aqui temos a + b (uma lista + outra faz a concatenação de ambas)
-    nodes_path: Annotated[list[str], reducer]  # O tipo é list[str]
+    nodes_path: Annotated[list[str], add_messages]  # O tipo é list[str]
 
 
 # A definição dos nodes

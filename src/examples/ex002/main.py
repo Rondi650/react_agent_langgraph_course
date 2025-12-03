@@ -1,7 +1,9 @@
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage, SystemMessage
+from dotenv import load_dotenv
+load_dotenv()
 
-llm = init_chat_model("ollama:gpt-oss:20b")
+llm = init_chat_model("openai:gpt-5-nano")
 
 # Em vários momentos, queremos fazer o modelo se comportar de determinada forma.
 # Para isso, podemos usar um tipo especial de mensagem que não deve ser exibida
@@ -45,7 +47,7 @@ print(response.content)  # Em response.content, teremos uma AIMessage nesse cont
 messages.append(response)
 while True:
     # Pega a mensagem do usuário
-    print(f"{'Human':-^80}")
+    print(f"{'Human':-r^80}")
     user_input = input("Digite sua mensagem: ")
     human_message = HumanMessage(user_input)
 

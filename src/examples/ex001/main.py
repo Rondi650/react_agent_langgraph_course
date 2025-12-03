@@ -1,9 +1,8 @@
 # OBSERVAÇÃO IMPORTANTE: o `.env` tem que estar carregado aqui, seja por
 # `python-dotenv` ou `uv`. Estou usando `uv` com o seguinte comando que já
 # carrega automaticamente as variáveis de ambiente do `.env`.
-#
+
 # uv run --env-file='.env' src/examples/ex001/main.py
-#
 
 # Sobre `init_chat_model`
 # `init_chat_model` nos permite criar uma instância de um chat model sem
@@ -12,6 +11,9 @@
 # `ChatOpenAI` do pacote `langchain_openai` isso deixaria o meu código um pouco
 # mais acoplado, já que eu precisaria fazer isso sempre que mudasse de modelo.
 # Pense nele como um atalho para criar um novo Chat Model.
+from dotenv import load_dotenv
+load_dotenv()
+
 from langchain.chat_models import init_chat_model
 
 ################################################################################
@@ -27,7 +29,7 @@ from langchain.chat_models import init_chat_model
 # llm = init_chat_model("anthropic:claude-3-7-sonnet-latest")
 
 # Para OpenAI
-# llm = init_chat_model("openai:gpt-5-nano")
+llm = init_chat_model("openai:gpt-5-nano")
 
 # Para Google Gemini
 # llm = init_chat_model("google_genai:gemini-2.5-flash")
@@ -39,7 +41,7 @@ from langchain.chat_models import init_chat_model
 
 # Vou usar Ollama neste exemplo
 
-llm = init_chat_model("ollama:gpt-oss:20b")
+# llm = init_chat_model("ollama:gpt-oss:20b")
 
 # A beleza do LangChain é que daqui para baixo, tudo é praticamente igual
 # para qualquer modelo.
@@ -68,4 +70,4 @@ print(response)
 #     id='run--f83c27bf-02da-4b7d-bdc5-16ec4be1139a-0',
 #     usage_metadata={'input_tokens': 72, 'output_tokens': 78, 'total_tokens': 150}
 # )
-#
+
